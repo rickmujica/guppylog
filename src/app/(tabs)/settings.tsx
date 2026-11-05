@@ -3,9 +3,10 @@ import * as DocumentPicker from 'expo-document-picker';
 import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { useSQLiteContext } from 'expo-sqlite';
-import { Alert, Pressable, Switch, Text, View } from 'react-native';
+import { Platform, Pressable, Switch, Text, View } from 'react-native';
 
 import { List, ListRow, Muted, Overline, Screen, Segmented, Title } from '@/components/ui';
+import { alert } from '@/lib/alert';
 import { exportAll, importAll, isBackup } from '@/lib/db';
 import { makeTranslate, type Lang } from '@/lib/i18n';
 import { rescheduleAll } from '@/lib/reminders';
@@ -26,6 +27,15 @@ export default function SettingsScreen() {
   const exportBackup = async () => {
     const data = await exportAll(db);
     const stamp = new Date().toISOString().slice(0, 10);
+    if (Platform.OS === 'web') {
+      // Browsers have no share sheet for files: download the JSON instead.
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(new Blob([JSON.stringify(data)], { type: 'application/json' }));
+      link.download = `guppylog-${stamp}.json`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+      return;
+    }
     const file = new File(Paths.cache, `guppylog-${stamp}.json`);
     if (file.exists) file.delete();
     file.create();
@@ -33,7 +43,7 @@ export default function SettingsScreen() {
     if (await Sharing.isAvailableAsync()) {
       await Sharing.shareAsync(file.uri, { mimeType: 'application/json', dialogTitle: t('set.export') });
     } else {
-      Alert.alert(t('set.exportDone'), file.uri);
+      alert(t('set.exportDone'), file.uri);
     }
   };
 
@@ -42,13 +52,14 @@ export default function SettingsScreen() {
     if (res.canceled || !res.assets[0]) return;
     let parsed: unknown;
     try {
-      parsed = JSON.parse(await new File(res.assets[0].uri).text());
+      const uri = res.assets[0].uri;
+      parsed = JSON.parse(Platform.OS === 'web' ? await (await fetch(uri)).text() : await new File(uri).text());
     } catch {
       parsed = null;
     }
-    if (!isBackup(parsed)) return Alert.alert(t('set.import'), t('set.importError'));
+    if (!isBackup(parsed)) return alert(t('set.import'), t('set.importError'));
     const backup = parsed;
-    Alert.alert(t('set.import'), t('set.importConfirm'), [
+    alert(t('set.import'), t('set.importConfirm'), [
       { text: t('common.cancel'), style: 'cancel' },
       {
         text: t('set.import'),
@@ -56,7 +67,7 @@ export default function SettingsScreen() {
         onPress: async () => {
           await importAll(db, backup);
           await rescheduleAll(db, t);
-          Alert.alert(t('set.importDone'));
+          alert(t('set.importDone'));
         },
       },
     ]);

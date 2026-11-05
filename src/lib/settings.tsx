@@ -1,8 +1,8 @@
 import { getLocales } from 'expo-localization';
-import Storage from 'expo-sqlite/kv-store';
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
 
+import { kv } from './kv';
 import { makeTranslate, type Lang, type Translate } from './i18n';
 import { buildTheme, type AccentName, type Theme, type ThemeMode } from './theme';
 
@@ -28,7 +28,7 @@ function defaultLang(): Lang {
 function loadSettings(): Settings {
   const defaults: Settings = { mode: null, accent: 'agua', lang: defaultLang(), tempUnit: 'C', volumeUnit: 'L' };
   try {
-    const raw = Storage.getItemSync(KEY);
+    const raw = kv.get(KEY);
     if (!raw) return defaults;
     return { ...defaults, ...(JSON.parse(raw) as Partial<Settings>) };
   } catch {
@@ -53,7 +53,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setSettings((prev) => {
       const next = { ...prev, ...patch };
       try {
-        Storage.setItemSync(KEY, JSON.stringify(next));
+        kv.set(KEY, JSON.stringify(next));
       } catch {
         // Settings still apply for this session even if saving fails.
       }

@@ -4,10 +4,11 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Stack } from 'expo-router/stack';
 import { useSQLiteContext } from 'expo-sqlite';
 import { useEffect, useState } from 'react';
-import { Alert, Image, Pressable, Text, View } from 'react-native';
+import { Image, Platform, Pressable, Text, View } from 'react-native';
 
 import { DateField } from '@/components/date-field';
 import { Button, Field, Icon, Screen } from '@/components/ui';
+import { alert } from '@/lib/alert';
 import { createAquarium, deleteAquarium, getAquarium, listReminders, updateAquarium } from '@/lib/db';
 import { formatNumber, parseNumber } from '@/lib/i18n';
 import { AQUARIUM_TYPES, L_PER_GAL, type AquariumType } from '@/lib/params';
@@ -17,6 +18,8 @@ import { radius } from '@/lib/theme';
 
 /** Copies a picked image into the app's own folder so it survives cache cleanup. */
 function persistPhoto(uri: string) {
+  // On the web the picker returns a data: URI that can be stored as is.
+  if (Platform.OS === 'web') return uri;
   const dir = new Directory(Paths.document, 'photos');
   if (!dir.exists) dir.create({ intermediates: true });
   const ext = uri.split('.').pop()?.split('?')[0] || 'jpg';
@@ -101,7 +104,7 @@ export default function AquariumFormScreen() {
 
   const remove = () => {
     if (!editingId) return;
-    Alert.alert(t('aq.deleteTitle'), t('common.confirmDelete'), [
+    alert(t('aq.deleteTitle'), t('common.confirmDelete'), [
       { text: t('common.cancel'), style: 'cancel' },
       {
         text: t('common.delete'),
