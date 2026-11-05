@@ -1,5 +1,7 @@
 import type { ImageSourcePropType } from 'react-native';
 
+import type { PhotoCredit } from '@/components/photo';
+
 type L = { es: string; en: string };
 
 export type Fish = {
@@ -22,6 +24,7 @@ export type Fish = {
   notes: L;
   water: 'freshwater' | 'saltwater';
   image?: ImageSourcePropType;
+  credit?: PhotoCredit;
 };
 
 /**
@@ -32,6 +35,8 @@ export const FISH: Fish[] = [
   {
     id: 'guppy',
     name: { es: 'Guppy', en: 'Guppy' },
+    image: require('../../assets/compendium/fish/guppy.jpg'),
+    credit: { author: 'Per Harald Olsen', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Guppy_pho_0048.jpg' },
     scientific: 'Poecilia reticulata',
     family: 'Poeciliidae',
     origin: { es: 'Norte de Sudamérica y Caribe', en: 'Northern South America and Caribbean' },
@@ -52,6 +57,8 @@ export const FISH: Fish[] = [
   {
     id: 'neon-tetra',
     name: { es: 'Neón tetra', en: 'Neon tetra' },
+    image: require('../../assets/compendium/fish/neon-tetra.jpg'),
+    credit: { author: 'Holger Krisp', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Neonsalmler_Paracheirodon_innesi.jpg' },
     scientific: 'Paracheirodon innesi',
     family: 'Characidae',
     origin: { es: 'Cuenca del Amazonas', en: 'Amazon basin' },
@@ -72,6 +79,8 @@ export const FISH: Fish[] = [
   {
     id: 'cardinal-tetra',
     name: { es: 'Tetra cardenal', en: 'Cardinal tetra' },
+    image: require('../../assets/compendium/fish/cardinal-tetra.jpg'),
+    credit: { author: 'CHUCAO', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Cardinal_Paracheirodon_axelrodi_%283%29.jpg' },
     scientific: 'Paracheirodon axelrodi',
     family: 'Characidae',
     origin: { es: 'Río Negro y Orinoco', en: 'Rio Negro and Orinoco' },
@@ -92,6 +101,8 @@ export const FISH: Fish[] = [
   {
     id: 'betta',
     name: { es: 'Betta', en: 'Betta' },
+    image: require('../../assets/compendium/fish/betta.jpg'),
+    credit: { author: 'Daniella Vereeken', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:HM_Orange_M_Sarawut.jpg' },
     scientific: 'Betta splendens',
     family: 'Osphronemidae',
     origin: { es: 'Tailandia y Camboya', en: 'Thailand and Cambodia' },
@@ -112,6 +123,8 @@ export const FISH: Fish[] = [
   {
     id: 'bronze-corydoras',
     name: { es: 'Corydora bronce', en: 'Bronze corydoras' },
+    image: require('../../assets/compendium/fish/bronze-corydoras.jpg'),
+    credit: { author: 'Quatermass', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Corydoras_aeneus_2.jpg' },
     scientific: 'Corydoras aeneus',
     family: 'Callichthyidae',
     origin: { es: 'Sudamérica', en: 'South America' },
@@ -132,6 +145,8 @@ export const FISH: Fish[] = [
   {
     id: 'angelfish',
     name: { es: 'Escalar', en: 'Angelfish' },
+    image: require('../../assets/compendium/fish/angelfish.jpg'),
+    credit: { author: 'Mattia Nocciola', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Pterophyllum_scalare_Natural_History_Museum_University_of_Pisa.jpg' },
     scientific: 'Pterophyllum scalare',
     family: 'Cichlidae',
     origin: { es: 'Cuenca del Amazonas', en: 'Amazon basin' },
@@ -152,6 +167,8 @@ export const FISH: Fish[] = [
   {
     id: 'discus',
     name: { es: 'Disco', en: 'Discus' },
+    image: require('../../assets/compendium/fish/discus.jpg'),
+    credit: { author: 'Patrick Farrelly', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Blue_Discus.jpg' },
     scientific: 'Symphysodon aequifasciatus',
     family: 'Cichlidae',
     origin: { es: 'Cuenca del Amazonas', en: 'Amazon basin' },
@@ -172,6 +189,8 @@ export const FISH: Fish[] = [
   {
     id: 'platy',
     name: { es: 'Platy', en: 'Platy' },
+    image: require('../../assets/compendium/fish/platy.jpg'),
+    credit: { author: 'Marrabbio2', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Rainbow_wag_platy.jpg' },
     scientific: 'Xiphophorus maculatus',
     family: 'Poeciliidae',
     origin: { es: 'México y Centroamérica', en: 'Mexico and Central America' },
@@ -192,6 +211,8 @@ export const FISH: Fish[] = [
   {
     id: 'molly',
     name: { es: 'Molly', en: 'Molly' },
+    image: require('../../assets/compendium/fish/molly.jpg'),
+    credit: { author: 'James LaFontaine (iNaturalist)', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Poecilia_sphenops%2C_Florida%2C_US_imported_from_iNaturalist_photo_487744119.jpeg' },
     scientific: 'Poecilia sphenops',
     family: 'Poeciliidae',
     origin: { es: 'México y Centroamérica', en: 'Mexico and Central America' },
@@ -212,6 +233,8 @@ export const FISH: Fish[] = [
   {
     id: 'swordtail',
     name: { es: 'Cola de espada', en: 'Swordtail' },
+    image: require('../../assets/compendium/fish/swordtail.jpg'),
+    credit: { author: 'Corydoras-adolfoi', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:DSC_0690_-_Edited.jpg' },
     scientific: 'Xiphophorus hellerii',
     family: 'Poeciliidae',
     origin: { es: 'México y Centroamérica', en: 'Mexico and Central America' },
@@ -232,6 +255,8 @@ export const FISH: Fish[] = [
   {
     id: 'zebra-danio',
     name: { es: 'Pez cebra', en: 'Zebra danio' },
+    image: require('../../assets/compendium/fish/zebra-danio.jpg'),
+    credit: { author: 'Marrabbio2', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Brachydanio_rerio.jpg' },
     scientific: 'Danio rerio',
     family: 'Danionidae',
     origin: { es: 'India y Bangladés', en: 'India and Bangladesh' },
@@ -252,6 +277,8 @@ export const FISH: Fish[] = [
   {
     id: 'harlequin-rasbora',
     name: { es: 'Rasbora arlequín', en: 'Harlequin rasbora' },
+    image: require('../../assets/compendium/fish/harlequin-rasbora.jpg'),
+    credit: { author: 'Roel Balingit', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Harlequin_rasboras_03.jpg' },
     scientific: 'Trigonostigma heteromorpha',
     family: 'Danionidae',
     origin: { es: 'Sudeste asiático', en: 'Southeast Asia' },
@@ -272,6 +299,8 @@ export const FISH: Fish[] = [
   {
     id: 'dwarf-gourami',
     name: { es: 'Gourami enano', en: 'Dwarf gourami' },
+    image: require('../../assets/compendium/fish/dwarf-gourami.jpg'),
+    credit: { author: 'Felix Gertz', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Colisa_lalia-Male_and_Female.jpg' },
     scientific: 'Trichogaster lalius',
     family: 'Osphronemidae',
     origin: { es: 'India y Bangladés', en: 'India and Bangladesh' },
@@ -292,6 +321,8 @@ export const FISH: Fish[] = [
   {
     id: 'pearl-gourami',
     name: { es: 'Gourami perla', en: 'Pearl gourami' },
+    image: require('../../assets/compendium/fish/pearl-gourami.jpg'),
+    credit: { author: 'Mattia Nocciola', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Trichopodus_leerii_Natural_History_Museum_University_of_Pisa.jpg' },
     scientific: 'Trichopodus leerii',
     family: 'Osphronemidae',
     origin: { es: 'Malasia, Tailandia, Borneo y Sumatra', en: 'Malaysia, Thailand, Borneo and Sumatra' },
@@ -312,6 +343,8 @@ export const FISH: Fish[] = [
   {
     id: 'ram-cichlid',
     name: { es: 'Ramirezi', en: 'Ram cichlid' },
+    image: require('../../assets/compendium/fish/ram-cichlid.jpg'),
+    credit: { author: 'Sven Kullander', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Mikrogeophagus_ramirezi_male.jpg' },
     scientific: 'Mikrogeophagus ramirezi',
     family: 'Cichlidae',
     origin: { es: 'Venezuela y Colombia', en: 'Venezuela and Colombia' },
@@ -332,6 +365,8 @@ export const FISH: Fish[] = [
   {
     id: 'otocinclus',
     name: { es: 'Otocinclus', en: 'Otocinclus' },
+    image: require('../../assets/compendium/fish/otocinclus.jpg'),
+    credit: { author: 'CHUCAO', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Otocinclus_arnoldi_%281%29.JPG' },
     scientific: 'Otocinclus spp.',
     family: 'Loricariidae',
     origin: { es: 'Sudamérica', en: 'South America' },
@@ -352,6 +387,8 @@ export const FISH: Fish[] = [
   {
     id: 'bristlenose-pleco',
     name: { es: 'Ancistrus (pleco de nariz peluda)', en: 'Bristlenose pleco' },
+    image: require('../../assets/compendium/fish/bristlenose-pleco.jpg'),
+    credit: { author: 'André Karwath', license: 'CC BY-SA 2.5', url: 'https://commons.wikimedia.org/wiki/File:Ancistrus_sp._%28aka%29.jpg' },
     scientific: 'Ancistrus sp.',
     family: 'Loricariidae',
     origin: { es: 'Sudamérica', en: 'South America' },
@@ -372,6 +409,8 @@ export const FISH: Fish[] = [
   {
     id: 'tiger-barb',
     name: { es: 'Barbo tigre', en: 'Tiger barb' },
+    image: require('../../assets/compendium/fish/tiger-barb.jpg'),
+    credit: { author: 'Editor General of Wiki', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Tiger_barb_fish.jpg' },
     scientific: 'Puntigrus tetrazona',
     family: 'Cyprinidae',
     origin: { es: 'Sumatra y Borneo', en: 'Sumatra and Borneo' },
@@ -392,6 +431,8 @@ export const FISH: Fish[] = [
   {
     id: 'goldfish',
     name: { es: 'Pez dorado (goldfish)', en: 'Goldfish' },
+    image: require('../../assets/compendium/fish/goldfish.jpg'),
+    credit: { author: 'לינה אבוגוש', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Gold_fish1.jpg' },
     scientific: 'Carassius auratus',
     family: 'Cyprinidae',
     origin: { es: 'Asia oriental (doméstico)', en: 'East Asia (domesticated)' },
@@ -412,6 +453,8 @@ export const FISH: Fish[] = [
   {
     id: 'kuhli-loach',
     name: { es: 'Locha kuhli', en: 'Kuhli loach' },
+    image: require('../../assets/compendium/fish/kuhli-loach.jpg'),
+    credit: { author: 'Iidkk', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Kuhli_loach_in_aquarium.jpg' },
     scientific: 'Pangio kuhlii',
     family: 'Cobitidae',
     origin: { es: 'Sudeste asiático', en: 'Southeast Asia' },
@@ -432,6 +475,8 @@ export const FISH: Fish[] = [
   {
     id: 'rummy-nose-tetra',
     name: { es: 'Tetra borracho (nariz roja)', en: 'Rummy-nose tetra' },
+    image: require('../../assets/compendium/fish/rummy-nose-tetra.jpg'),
+    credit: { author: 'Lerdsuwa', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Brilliant_rummy_nose_-_Petitella_bleheri_-_2.jpg' },
     scientific: 'Hemigrammus bleheri',
     family: 'Characidae',
     origin: { es: 'Río Negro (Amazonas)', en: 'Rio Negro (Amazon)' },
@@ -452,6 +497,8 @@ export const FISH: Fish[] = [
   {
     id: 'oscar',
     name: { es: 'Óscar', en: 'Oscar' },
+    image: require('../../assets/compendium/fish/oscar.jpg'),
+    credit: { author: 'Jón Helgi Jónsson (Amything)', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Astronotus_ocellatus.jpg' },
     scientific: 'Astronotus ocellatus',
     family: 'Cichlidae',
     origin: { es: 'Cuenca del Amazonas', en: 'Amazon basin' },
@@ -472,6 +519,8 @@ export const FISH: Fish[] = [
   {
     id: 'endler',
     name: { es: 'Endler', en: "Endler's livebearer" },
+    image: require('../../assets/compendium/fish/endler.jpg'),
+    credit: { author: 'Emilio17', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Poecilia_wingei_Campoma_male_021en_20130303.jpg' },
     scientific: 'Poecilia wingei',
     family: 'Poeciliidae',
     origin: { es: 'Venezuela', en: 'Venezuela' },
@@ -492,6 +541,8 @@ export const FISH: Fish[] = [
   {
     id: 'cherry-barb',
     name: { es: 'Barbo cereza', en: 'Cherry barb' },
+    image: require('../../assets/compendium/fish/cherry-barb.jpg'),
+    credit: { author: 'sannse', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Male_Cherry_Barb_700.jpg' },
     scientific: 'Puntius titteya',
     family: 'Cyprinidae',
     origin: { es: 'Sri Lanka', en: 'Sri Lanka' },
