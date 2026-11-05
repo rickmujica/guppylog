@@ -1,5 +1,7 @@
 import type { ImageSourcePropType } from 'react-native';
 
+import type { PhotoCredit } from '@/components/photo';
+
 type L = { es: string; en: string };
 
 export type Disease = {
@@ -16,6 +18,7 @@ export type Disease = {
   treatment: L;
   prevention: L;
   image?: ImageSourcePropType;
+  credit?: PhotoCredit;
 };
 
 /**
@@ -26,6 +29,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'ich',
     name: { es: 'Punto blanco (Ich)', en: 'White spot (Ich)' },
+    image: require('../../assets/compendium/diseases/ich.jpg'),
+    credit: { author: 'Djpalme', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Ichthyophthiriasis.jpg' },
     scientific: 'Ichthyophthirius multifiliis',
     kind: { es: 'Parásito', en: 'Parasite' },
     severity: 'common',
@@ -54,6 +59,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'velvet',
     name: { es: 'Terciopelo (Oodinium)', en: 'Velvet (Oodinium)' },
+    image: require('../../assets/compendium/diseases/velvet.jpg'),
+    credit: { author: 'Mydigitalife', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Velvet_infection.JPG' },
     scientific: 'Piscinoodinium pillulare',
     kind: { es: 'Parásito', en: 'Parasite' },
     severity: 'moderate',
@@ -82,6 +89,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'fin-rot',
     name: { es: 'Podredumbre de aletas', en: 'Fin rot' },
+    image: require('../../assets/compendium/diseases/fin-rot.jpg'),
+    credit: { author: 'Dizzy Respect', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Fin_Rot_on_Betta_Fish.jpg' },
     kind: { es: 'Bacteriana', en: 'Bacterial' },
     severity: 'common',
     contagious: false,
@@ -109,6 +118,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'columnaris',
     name: { es: 'Columnaris', en: 'Columnaris' },
+    image: require('../../assets/compendium/diseases/columnaris.jpg'),
+    credit: { author: '', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Columnaris_disease.jpg' },
     scientific: 'Flavobacterium columnare',
     kind: { es: 'Bacteriana', en: 'Bacterial' },
     severity: 'serious',
@@ -137,6 +148,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'fungus',
     name: { es: 'Hongos (Saprolegnia)', en: 'Fungus (Saprolegnia)' },
+    image: require('../../assets/compendium/diseases/fungus.jpg'),
+    credit: { author: 'Hans Lauterbach Furchenstein', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Forelle_mit_Pilzerkrankung.jpg' },
     scientific: 'Saprolegnia spp.',
     kind: { es: 'Fúngica', en: 'Fungal' },
     severity: 'common',
@@ -165,6 +178,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'dropsy',
     name: { es: 'Hidropesía', en: 'Dropsy' },
+    image: require('../../assets/compendium/diseases/dropsy.jpg'),
+    credit: { author: 'Taipan198', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Hydropisie.jpg' },
     kind: { es: 'Síntoma de infección interna', en: 'Sign of internal infection' },
     severity: 'serious',
     contagious: false,
@@ -192,6 +207,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'swim-bladder',
     name: { es: 'Problemas de vejiga natatoria', en: 'Swim bladder disorder' },
+    image: require('../../assets/compendium/diseases/swim-bladder.jpg'),
+    credit: { author: 'Humanfeather / Michelle Jo', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Goldfish_with_swim_bladder_disease.JPG' },
     kind: { es: 'Trastorno', en: 'Disorder' },
     severity: 'moderate',
     contagious: false,
@@ -246,6 +263,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'hlle',
     name: { es: 'Agujeros en la cabeza (HLLE)', en: 'Hole in the head (HLLE)' },
+    image: require('../../assets/compendium/diseases/hlle.jpg'),
+    credit: { author: 'Anon42343890450934', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Oscar2.jpg' },
     kind: { es: 'Trastorno', en: 'Disorder' },
     severity: 'moderate',
     contagious: false,
@@ -273,6 +292,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'camallanus',
     name: { es: 'Gusanos Camallanus', en: 'Camallanus worms' },
+    image: require('../../assets/compendium/diseases/camallanus.jpg'),
+    credit: { author: 'BlueBreezeWiki', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:190729_Guppy_01.jpg' },
     scientific: 'Camallanus spp.',
     kind: { es: 'Parásito interno', en: 'Internal parasite' },
     severity: 'moderate',
@@ -301,6 +322,8 @@ export const DISEASES: Disease[] = [
   {
     id: 'anchor-worm',
     name: { es: 'Gusano ancla (Lernaea)', en: 'Anchor worm (Lernaea)' },
+    image: require('../../assets/compendium/diseases/anchor-worm.jpg'),
+    credit: { author: 'US Geological Survey', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Lernaea_cyprinacea.jpg' },
     scientific: 'Lernaea spp.',
     kind: { es: 'Parásito externo', en: 'External parasite' },
     severity: 'moderate',

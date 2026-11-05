@@ -2,7 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { Stack } from 'expo-router/stack';
 import { Text, View } from 'react-native';
 
-import { Photo } from '@/components/photo';
+import { Photo, PhotoCreditLine } from '@/components/photo';
 import { Body, Chip, Muted, Overline, Screen, Title } from '@/components/ui';
 import { getDisease } from '@/data/diseases';
 import { useUI } from '@/lib/settings';
@@ -24,7 +24,10 @@ export default function DiseaseScreen() {
   return (
     <Screen>
       <Stack.Screen options={{ title: '' }} />
-      <Photo source={d.image} height={220} radius={16} icon="medkit-outline" caption={d.image ? undefined : t('lib.photoSoon')} />
+      <View style={{ gap: 6 }}>
+        <Photo source={d.image} height={220} radius={16} icon="medkit-outline" caption={d.image ? undefined : t('lib.photoSoon')} />
+        <PhotoCreditLine credit={d.credit} />
+      </View>
       <View style={{ gap: 6 }}>
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <Chip label={d.kind[lang]} />

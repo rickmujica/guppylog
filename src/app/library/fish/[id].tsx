@@ -2,7 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { Stack } from 'expo-router/stack';
 import { Text, View } from 'react-native';
 
-import { Photo } from '@/components/photo';
+import { Photo, PhotoCreditLine } from '@/components/photo';
 import { Body, Chip, List, ListRow, Muted, Overline, Screen, Title } from '@/components/ui';
 import { getFish } from '@/data/fish';
 import { formatNumber } from '@/lib/i18n';
@@ -35,7 +35,10 @@ export default function FishScreen() {
   return (
     <Screen>
       <Stack.Screen options={{ title: '' }} />
-      <Photo source={f.image} height={220} radius={16} caption={f.image ? undefined : t('lib.photoSoon')} />
+      <View style={{ gap: 6 }}>
+        <Photo source={f.image} height={220} radius={16} caption={f.image ? undefined : t('lib.photoSoon')} />
+        <PhotoCreditLine credit={f.credit} />
+      </View>
       <View style={{ gap: 6 }}>
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <Chip label={t(`lib.care.${f.care}`)} tone={f.care === 'hard' ? 'warn' : 'accent'} />
