@@ -46,3 +46,14 @@ src/
 ## Publicar
 
 Las versiones para tiendas se generan con EAS (`npx eas-cli@latest build`). Antes de publicar faltan el ícono, la pantalla de inicio definitiva y las fotos del compendio.
+
+## Versión web (demo)
+
+La app también corre en el navegador como demo pública (la usa el portafolio). Para generarla: `npx expo export -p web`, que deja el sitio en `dist/`. En Vercel alcanza con importar el repositorio: `vercel.json` ya define el build y la carpeta de salida.
+
+Diferencias con la app del teléfono:
+
+- La primera visita carga dos acuarios de ejemplo (`src/lib/demo.web.ts`) para que haya algo que mirar. Solo pasa una vez por navegador.
+- Los ajustes se guardan en `localStorage` (`src/lib/kv.web.ts`), porque la API sincrónica de SQLite en la web necesita `SharedArrayBuffer`, que el navegador no permite dentro de un iframe.
+- Las confirmaciones usan los diálogos del navegador (`src/lib/alert.web.ts`) y la copia de seguridad se descarga como archivo.
+- No hay notificaciones: los recordatorios se ven en la app pero no avisan.

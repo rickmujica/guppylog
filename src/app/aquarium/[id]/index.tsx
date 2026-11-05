@@ -1,6 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { Stack } from 'expo-router/stack';
-import { Alert, Image, Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 
 import { Button, Heading, Icon, IconButton, List, ListRow, Muted, Screen, Section } from '@/components/ui';
 import {
@@ -12,6 +12,7 @@ import {
   listWaterChanges,
   type ReminderWithAquarium,
 } from '@/lib/db';
+import { alert } from '@/lib/alert';
 import { dayDiff, formatDate, formatNumber, relativeDay } from '@/lib/i18n';
 import { formatParam, formatVolume, paramsFor, rangeStatus } from '@/lib/params';
 import { cancelReminder, completeReminder, reminderLabel } from '@/lib/reminders';
@@ -64,7 +65,7 @@ export default function AquariumDetailScreen() {
   };
 
   const reminderMenu = (r: ReminderWithAquarium) => {
-    Alert.alert(reminderLabel(t, r), t('rem.everyN', { n: r.interval_days }), [
+    alert(reminderLabel(t, r), t('rem.everyN', { n: r.interval_days }), [
       { text: t('common.cancel'), style: 'cancel' },
       {
         text: t('common.delete'),
@@ -79,7 +80,7 @@ export default function AquariumDetailScreen() {
   };
 
   const changeMenu = (changeId: number) => {
-    Alert.alert(t('wc.title'), t('common.confirmDelete'), [
+    alert(t('wc.title'), t('common.confirmDelete'), [
       { text: t('common.cancel'), style: 'cancel' },
       {
         text: t('common.delete'),

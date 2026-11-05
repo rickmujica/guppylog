@@ -2,10 +2,11 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Stack } from 'expo-router/stack';
 import { useSQLiteContext } from 'expo-sqlite';
 import { useState } from 'react';
-import { Alert, Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { DateField } from '@/components/date-field';
 import { Button, Field, Screen } from '@/components/ui';
+import { alert } from '@/lib/alert';
 import { createReminder, REMINDER_KINDS, type ReminderKind } from '@/lib/db';
 import { parseNumber } from '@/lib/i18n';
 import { dueInDays, ensureNotificationPermission, rescheduleReminder } from '@/lib/reminders';
@@ -54,7 +55,7 @@ export default function NewReminderScreen() {
         next_due: d.getTime(),
       });
       await rescheduleReminder(db, reminderId, d.getTime(), t);
-      if (!granted) Alert.alert(t('rem.newTitle'), t('rem.permDenied'));
+      if (!granted) alert(t('rem.newTitle'), t('rem.permDenied'));
       router.back();
     } finally {
       setSaving(false);
